@@ -1,0 +1,8 @@
+.DS_Store
+gpt-image-api/*
+pdf/*
+screenshot/*
+speech/*
+.system/*
+**/__pycache__/
+*.py[cod]

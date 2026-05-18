@@ -1,0 +1,9 @@
+display_name: CS Paper Reader
+short_description: Deep Chinese CS paper notes (single + batch)
+default_prompt: |
+  精读这篇计算机科研论文（或这一批论文），按背景动机、形式化定义、方法、实验、相关工作区别、贡献与局限整理成中文 Markdown 笔记，并按 `(Venue Year) MethodName-Paper Title.md` 保存。
+
+  - 单篇任务：按 SKILL.md "Reading Workflow" 走，每节都引用 PDF 的真实公式 / 表格 / 章节号。
+  - 批量任务（manifest / 整章 / 全自动 / 逐篇阅读一个目录）：按 SKILL.md "Mode B — Batch reading" 与 `references/batch-workflow.md` 走，最终笔记/`_progress_<batch>.md`/`_collision_warnings.md`/`_final_report_<batch>.md` 落 `<output>/`，中间产物（`_evidence/<Method>.md`、`pdftotext` 原文、`paper-figure-clipper` 的 `manifest.json` 等）落 `/tmp/cs-paper-reader-<batch>/`，详见 SKILL.md §"Output Hygiene"。遵守抗模板红线与单次响应预算。批次无外部参照时启用 bootstrap 协议（前 2 篇自参照）。
+  - 落盘前一律跑 `references/anti-template.md` 末尾的 master grep；命中即修，修不掉就标 ⚠️ 继续，不要中途询问。
+  - **图文并茂**：当论文含关键示意图 / 多列消融表 / 算法伪代码 / 复杂公式时，用 `paper-figure-clipper` skill 截图（精确 bbox，无杂乱内容）。**staging 一律落 `/tmp/paper-figs/<Method>/<type>_<label>_p<page>.png`**，笔记中用最终相对路径 `![caption](_figs/<Method>/...png)` 引用；笔记定稿后才把被引用的 PNG promote 到 `<output>/_figs/<Method>/`。具体见 SKILL.md "Image-Rich Notes" 一节。

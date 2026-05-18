@@ -1,0 +1,12 @@
+display_name: Paper Figure Clipper
+short_description: Precise figure/table/algorithm/equation extraction from PDFs
+default_prompt: |
+  从论文 PDF 中精确截图，用于配合 cs-paper-reader 生成图文并茂的笔记。
+
+  - 三种模式：`scan`（pdffigures2 枚举所有 figure/table）、`clip`（PyMuPDF 精确截 figure/table/algorithm/equation/bbox）、`page`（兜底整页）。
+  - 命令入口：`~/.codex/skills/paper-figure-clipper/scripts/clip.py <scan|clip|page> ...`
+  - Python 解释器：`~/.codex/venvs/paper-figure-clipper/bin/python`（PyMuPDF + pdfplumber + Pillow 已装好）。
+  - 输出（staging）一律落 `/tmp/paper-figs/<Method>/<type>_<label>_p<page>.png`，**不直接写 `<output>/_figs/`**；笔记定稿后只把被引用的 PNG promote 到 `<output>/_figs/<Method>/`，文件名保持一致。Markdown 用最终相对路径 `_figs/<Method>/...png` 引用。
+  - 所有定位都基于真实 PDF 元素（text rect / horizontal rule / table object），不用百分比裁剪。
+  - 默认 DPI=200, padding=4pt。需要更高质量加 `--dpi 300`，需要紧贴边界加 `--padding 0`。
+  - 详细工作流见 `SKILL.md`；常见命令见 `references/recipe-book.md`；定位算法见 `references/locator-design.md`。

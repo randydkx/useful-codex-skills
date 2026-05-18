@@ -1,0 +1,50 @@
+# LLM-compression subfield patterns for check_note_quality.py
+#
+# Loaded via:  --subfield llm-compression
+#
+# Format:
+#   - Lines starting with `#` are comments.
+#   - Blank lines are ignored.
+#   - Sections are delimited by  [SECTION_NAME]  headers.
+#   - Recognized sections:
+#       [FORBIDDEN]   one regex per line, appended to the universal
+#                     FORBIDDEN_PATTERNS at runtime.
+#       [BLACKLIST]   one token per line, appended to the §5 method-name
+#                     blacklist (these tokens are NOT counted as compared
+#                     methods).
+#
+# When you start a batch in a different subfield (knowledge editing, retrieval,
+# agents, training systems, alignment, vision, etc.), copy this file to
+# `<subfield>.txt` and edit both sections. See references/anti-template.md
+# §"How to specialize this file for a new subfield".
+
+[FORBIDDEN]
+# A. Generic placeholder sentences (compression-specific instantiations of §A)
+LLM 部署很贵
+随参数量增长
+参数量、计算量、显存
+小模型从头训练
+PPL 改善不一定
+# B. Universal-skeleton formulas (compression-specific instantiations of §B)
+重要性分数 s_g
+剪枝单元 G
+# D. Meta-description placeholders (compression-specific; the universal ones
+#     `应重点检查 / 应该查 / 应该看` live in the script itself)
+# E. Quantification-free comparison (compression-specific banned phrases)
+更适合 LLM
+在结构剪枝中表现良好
+
+[BLACKLIST]
+# §5 method-count blacklist: compression-specific tokens that should NOT
+# be counted as "compared methods" when computing min_section5_methods.
+# Universal blacklist (PDF, LLM, GPU, CPU, FP, INT, BF, Table, Fig, ...)
+# lives in the script.
+LoRA
+PPL
+MMLU
+C4
+WikiText
+WikiText2
+QAT
+PTQ
+RFT
