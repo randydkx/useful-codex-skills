@@ -240,7 +240,7 @@ PDF: /path/to/paper.pdf
 使用 $cs-paper-reader 和 $paper-figure-clipper。
 阅读 /path/to/pdf_folder 下的所有 PDF，直到整批完成。
 笔记输出到 /path/to/notes。
-逐篇处理，已有临时证据有效时可以复用，并保持最终笔记符合 skill 规范。
+注意：逐篇处理，已有临时证据有效时可以复用，并保持最终笔记符合 skill 规范. 不能使用自动化程序撰写文档，每一篇都必须手写，且每篇都必须完成质量检查、图片检查和实验结果冗余检查
 ```
 
 手动裁剪图表：

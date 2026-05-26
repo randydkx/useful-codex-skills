@@ -142,6 +142,12 @@ LATEX_RESIDUES = [
     r"(?<!\\s)(?<![A-Za-z])qrt\{",
     # `lpha` not preceded by `\a` (so `\alpha` is OK).
     r"(?<!\\a)(?<![A-Za-z])lpha(?![A-Za-z])",
+    # `eta` from broken `\beta`. Two extra lookbehinds beyond the usual
+    # pattern: `(?<!\\b)` so `\beta` itself is OK, AND `(?<!\\)` so the
+    # real LaTeX command `\eta` is also OK. The other residue patterns
+    # (`\lpha`, `\rac`, ...) don't need the extra `(?<!\\)` because
+    # `\lpha` / `\rac` aren't real LaTeX commands; `\eta` is.
+    r"(?<!\\b)(?<!\\)(?<![A-Za-z])eta(?![A-Za-z])",
     # `ambda` not preceded by `\l` (so `\lambda` is OK).
     r"(?<!\\l)(?<![A-Za-z])ambda(?![A-Za-z])",
     # `abla` not preceded by `\n` (so `\nabla` is OK).
